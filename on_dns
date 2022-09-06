@@ -18,9 +18,10 @@ elif grep -q -E '(^|\s)#rc-manager=file($|\s)' $Netconf && grep -q -E '(^|\s)#dn
   echo Changing...
   $WriteChange1
   $WriteChange2
+  systemctl restart NetworkManager
+  systemctl restart dnscrypt-proxy.socket
   cp /etc/resolv.conf.bak /etc/resolv.conf
   sleep 2
   echo $Line
   echo DNS turned on
-  echo "Don't forget to restart NetworkManager and dnscrypt-proxy.socket!"
 fi
