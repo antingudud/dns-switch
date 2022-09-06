@@ -19,7 +19,8 @@ elif grep -q -E '(^|\s)rc-manager=file($|\s)' $Netconf && grep -q -E '(^|\s)dns=
   $WriteChange2
   rm -f /etc/resolv.conf
   netconfig update -f 
+  systemctl restart NetworkManager
+  systemctl restart dnscrypt-proxy.socket
   echo $Line
   echo DNS turned off.
-  echo "Don't forget to restart NetworkManager and dnscrypt-proxy.socket!"
 fi
